@@ -40,7 +40,8 @@ void execute_nhdp_gibbs_sampling_with_snapshots(NanoporeHDP* nhdp, int64_t num_s
 
 void finalize_nhdp_distributions(NanoporeHDP* nhdp);
 
-double get_nanopore_kmer_density(NanoporeHDP* nhdp, void *kmer, void *event);
+double get_nanopore_kmer_density(NanoporeHDP* nhdp, double x, char* kmer);
+
 
 void update_nhdp_from_alignment(NanoporeHDP* nhdp, const char* alignment_filepath, bool has_header);
 
@@ -58,6 +59,19 @@ NanoporeDistributionMetricMemo* new_nhdp_l2_distance_memo(NanoporeHDP* nhdp);
 NanoporeDistributionMetricMemo* new_nhdp_shannon_jensen_distance_memo(NanoporeHDP* nhdp);
 // note: the lifetime of a NanoporeDistributionMetricMemo is tied to the lifetime of the
 // NanoporeHDP that generated it
+
+double compare_nhdp_distrs_kl_divergence(NanoporeHDP* nhdp_1, char* kmer_1,
+                                         NanoporeHDP* nhdp_2, char* kmer_2);
+
+double compare_nhdp_distrs_l2_distance(NanoporeHDP* nhdp_1, char* kmer_1,
+                                       NanoporeHDP* nhdp_2, char* kmer_2) ;
+
+double compare_nhdp_distrs_shannon_jensen_distance(NanoporeHDP* nhdp_1, char* kmer_1,
+                                                   NanoporeHDP* nhdp_2, char* kmer_2);
+
+double compare_nhdp_distrs_hellinger_distance(NanoporeHDP* nhdp_1, char* kmer_1,
+                                              NanoporeHDP* nhdp_2, char* kmer_2);
+
 
 // single level HDP
 NanoporeHDP* flat_hdp_model(const char* alphabet, int64_t alphabet_size, int64_t kmer_length, double base_gamma,
