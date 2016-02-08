@@ -40,7 +40,8 @@ void execute_nhdp_gibbs_sampling_with_snapshots(NanoporeHDP* nhdp, int64_t num_s
 
 void finalize_nhdp_distributions(NanoporeHDP* nhdp);
 
-double get_nanopore_kmer_density(NanoporeHDP* nhdp, void *kmer, void *event);
+double get_nanopore_kmer_density(NanoporeHDP* nhdp, double x, char* kmer);
+
 
 void update_nhdp_from_alignment(NanoporeHDP* nhdp, const char* alignment_filepath, bool has_header);
 

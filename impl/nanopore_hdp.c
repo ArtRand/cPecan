@@ -383,8 +383,8 @@ int64_t nhdp_kmer_id(NanoporeHDP* nhdp, char* kmer) {
     return kmer_id(kmer, nhdp->alphabet, nhdp->alphabet_size, nhdp->kmer_length);
 }
 
-double get_nanopore_kmer_density(NanoporeHDP* nhdp, void *kmer, void *x) {
-    return dir_proc_density(nhdp->hdp, *(double*) x, nhdp_kmer_id(nhdp, (char *)kmer));
+double get_nanopore_kmer_density(NanoporeHDP* nhdp, double x, char* kmer) {
+    return dir_proc_density(nhdp->hdp, x, nhdp_kmer_id(nhdp, kmer));
 }
 
 double get_kmer_distr_distance(NanoporeDistributionMetricMemo* memo, char* kmer_1, char* kmer_2) {
